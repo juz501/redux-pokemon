@@ -4,16 +4,22 @@
   "description": "Learn redux",
   "main": "index.js",
   "devDependencies": {
-    "": ""
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src/server/server.jsx && eslint src/client/client.jsx"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
+    "qs": "^6.3.0",
     "react": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
     "redux": "^3.6.0"
   }
