@@ -32,6 +32,10 @@ function renderFullPage(html, preloadedState) {
 }
 
 function mapPokemons(k) {
+  return k.Name;
+}
+
+function mapPokemonSlugs(k) {
   return k.Name.toLowerCase();
 }
 
@@ -64,11 +68,16 @@ function handleRender(req, res) {
   const pokemon = params.pokemon || ['pikachu'];
   let pokemons = [];
   const pokemonNames = pokemonListJSON.map(mapPokemons) || [];
+  const pokemonSlugs = pokemonListJSON.map(mapPokemonSlugs) || [];
   const pokemonImages = pokemonListJSON.map(mapPokemonImages) || [];
 
-  Object.keys(pokemonNames).forEach((key) => {
-    if (pokemon.indexOf(pokemonNames[key]) !== -1) {
-      pokemons = [...pokemons, { name: pokemonNames[key], image: pokemonImages[key] }];
+  Object.keys(pokemonSlugs).forEach((key) => {
+    if (pokemon.indexOf(pokemonSlugs[key]) !== -1) {
+      pokemons = [...pokemons, {
+        name: pokemonNames[key],
+        slug: pokemonSlugs[key],
+        image: pokemonImages[key]
+      }];
     }
   });
 

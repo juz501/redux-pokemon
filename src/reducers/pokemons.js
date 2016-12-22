@@ -1,4 +1,8 @@
 function mapPokemons(k) {
+  return k.Name;
+}
+
+function mapPokemonSlugs(k) {
   return k.Name.toLowerCase();
 }
 
@@ -20,14 +24,19 @@ function findPokemon(pokemons, name) {
 const pokemons = (state = [{ name: 'pikachu', image: '' }], action) => {
   switch (action.type) {
     case 'ADD_POKEMON': {
-      const name = action.name;
+      const slug = action.slug;
       const pokemonListJSON = action.data;
       const pokemonNames = pokemonListJSON.map(mapPokemons) || [];
+      const pokemonSlugs = pokemonListJSON.map(mapPokemonSlugs) || [];
       const pokemonImages = pokemonListJSON.map(mapPokemonImages) || [];
       let matches = [...state];
       Object.keys(pokemonNames).forEach((key) => {
-        const newObj = { name: pokemonNames[key], image: pokemonImages[key] };
-        if (pokemonNames[key].indexOf(name) !== -1 && !findPokemon(state, newObj.name)) {
+        const newObj = {
+          name: pokemonNames[key],
+          slug: pokemonSlugs[key],
+          image: pokemonImages[key]
+        };
+        if (pokemonSlugs[key].indexOf(slug) !== -1 && !findPokemon(state, newObj.slug)) {
           matches = [...state, newObj];
         }
       });

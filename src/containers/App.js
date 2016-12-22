@@ -26,7 +26,7 @@ let App = ({
           value={searchInput}
           placeholder="Type and select to add more pokemon"
         />
-        { searchResults.length > 0 ? <ul>{searchResults.map((res, i) => <li key={i} className="result" onClick={() => { onSelectPokemon(res, pokemonData); }}>{res}</li>)}</ul> : '' }
+        { searchResults.length > 0 ? <ul className="resultList">{searchResults.map((res, i) => <li key={i} className="result" onClick={() => { onSelectPokemon(res, pokemonData); }}>{res}</li>)}</ul> : '' }
       </div>
       <ul>{pokemons.map((pokemon, i) =>
         <li key={i} className="pokemon" >
@@ -38,7 +38,11 @@ let App = ({
 );
 
 App.propTypes = {
-  pokemons: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string.isRequired })).isRequired,
+  pokemons: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired
+  })).isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.string.isRequired),
   searchInput: PropTypes.string.isRequired,
   pokemonData: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -61,8 +65,8 @@ const mapDispatchToProps = dispatch => ({
   onFindPokemon: (text, pokedata) => {
     dispatch(findPokemon(text, pokedata));
   },
-  onSelectPokemon: (name, pokedata) => {
-    dispatch(addPokemon(name, pokedata));
+  onSelectPokemon: (slug, pokedata) => {
+    dispatch(addPokemon(slug, pokedata));
   }
 });
 

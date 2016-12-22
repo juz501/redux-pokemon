@@ -1,4 +1,4 @@
-function mapPokemons(k) {
+function mapPokemonSlugs(k) {
   return k.Name.toLowerCase();
 }
 
@@ -8,10 +8,10 @@ const search = (state = { searchMatches: [], searchInput: '' }, action) => {
       const text = action.text;
       let matches = [];
       const pokemonData = action.data;
-      const pokemonNames = pokemonData.map(mapPokemons);
-      Object.keys(pokemonNames).forEach((key) => {
-        if (pokemonNames[key].indexOf(text) !== -1) {
-          matches = [...matches, pokemonNames[key]];
+      const pokemonSlugs = pokemonData.map(mapPokemonSlugs);
+      Object.keys(pokemonSlugs).forEach((key) => {
+        if (pokemonSlugs[key].indexOf(text) !== -1) {
+          matches = [...matches, pokemonSlugs[key]];
         }
       });
       return Object.assign({}, state, { searchMatches: matches });
