@@ -1,0 +1,20 @@
+{
+  "name": "redux",
+  "version": "1.0.0",
+  "description": "Learn redux",
+  "main": "index.js",
+  "devDependencies": {
+    "": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "react": "^15.4.1",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0"
+  }
+}
