@@ -26,12 +26,14 @@ let App = ({
           value={searchInput}
           placeholder="Type and select to add more pokemon"
         />
-        { searchResults.length > 0 ? <ul className="resultList">{searchResults.map((res, i) => <li key={i} className="result" onClick={() => { onSelectPokemon(res, pokemonData); }}>{res}</li>)}</ul> : '' }
+        { searchResults.length > 0 ? <ul className="resultList">{searchResults.map((res, i) => <li key={i} className="result" onClick={() => { onSelectPokemon(res.slug, pokemonData); }}>{res.name}</li>)}</ul> : '' }
       </div>
-      <ul>{pokemons.map((pokemon, i) =>
-        <li key={i} className="pokemon" >
-          <img src={`/build/images/${pokemon.image}`} alt={pokemon.name} width="200" height="200" />
+      <ul className="pokemonList">{pokemons.map((pokemon, i) =>
+        <li key={i} className="pokemonItem">
           <h2>{pokemon.name}</h2>
+          <div className="pokemon">
+              <img src={`/build/images/${pokemon.image}`} alt={pokemon.name} width="auto" height="auto" />
+          </div>
         </li>)}
       </ul>
     </div>
@@ -43,7 +45,10 @@ App.propTypes = {
     slug: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired
   })).isRequired,
-  searchResults: PropTypes.arrayOf(PropTypes.string.isRequired),
+  searchResults: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired
+  })).isRequired,
   searchInput: PropTypes.string.isRequired,
   pokemonData: PropTypes.arrayOf(PropTypes.object).isRequired,
   onInputChange: PropTypes.func.isRequired,

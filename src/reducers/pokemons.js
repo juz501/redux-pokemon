@@ -2,47 +2,47 @@ function mapPokemons(k) {
   return k.Name;
 }
 
-function mapPokemonSlugs(k) {
-  if (k.Name === 'Nidoran \u2642') {
+function nameToSlug(name) {
+  if (typeof name == 'undefined') {
+    return '';
+  } else if (name === 'Nidoran \u2642') {
     return 'nidoran-m';
-  } else if (k.Name === 'Nidoran \u2640') {
+  } else if (name === 'Nidoran \u2640') {
     return 'nidoran-f';
-  } else if (k.Name === 'Mr. Mime') {
+  } else if (name === 'Mr. Mime') {
     return 'mr-mime';
   }
-  return k.Name.toLowerCase();
+  return name.toLowerCase();  
+}
+
+function mapPokemonSlugs(k) {
+  return nameToSlug(k.Name);  
 }
 
 function mapPokemonImages(k) {
-  if (k.Name === 'Nidoran \u2642') {
-    return 'nidoran-m.jpg';
-  } else if (k.Name === 'Nidoran \u2640') {
-    return 'nidoran-f.jpg';
-  } else if (k.Name === 'Mr. Mime') {
-    return 'mr-mime.jpg';
-  }
-  return `${k.Name.toLowerCase()}.jpg`;
+  const slug = nameToSlug(k.Name);
+  return `${slug}.jpg`;
 }
 
-function findPokemon(pokemons, name) {
-  return pokemons.some(arrVal => name === arrVal.name);
+function findPokemon(pokemons, slug) {
+  return pokemons.some(arrVal => slug === arrVal.slug);
 }
 
-const pokemons = (state = [{ name: 'pikachu', image: '' }], action) => {
+const pokemons = (state = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/images/pikachu.jpg' }], action) => {
   switch (action.type) {
     case 'ADD_POKEMON': {
-      const slug = action.slug;
+    const slug = (action.slug ? nameToSlug(action.slug) : '');
       const pokemonListJSON = action.data;
       const pokemonNames = pokemonListJSON.map(mapPokemons) || [];
       const pokemonSlugs = pokemonListJSON.map(mapPokemonSlugs) || [];
       const pokemonImages = pokemonListJSON.map(mapPokemonImages) || [];
       let matches = [...state];
-      Object.keys(pokemonNames).forEach((key) => {
+      Object.keys(pokemonSlugs).forEach((key) => {
         const newObj = {
           name: pokemonNames[key],
           slug: pokemonSlugs[key],
           image: pokemonImages[key]
-        };
+        };        
         if (pokemonSlugs[key].indexOf(slug) !== -1 && !findPokemon(state, newObj.slug)) {
           matches = [...state, newObj];
         }

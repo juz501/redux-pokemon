@@ -32,7 +32,8 @@
     "webpack:watch": "webpack --progress --colors --display-error-details --watch",
     "assets": "npm run json && npm run styles",
     "json": "cp -p assets/json/*.json build/json",
-    "styles": "cp -p assets/css/*.css build/css",    
+    "styles": "cp -p assets/css/*.css build/css",
+    "styles:watch": "watch \"npm run-script styles\" assets/css",
     "lint:watch": "watch \"npm run-script lint\" src",
     "lint": "eslint src/server/server.js src/client/client.js src/actions src/reducers src/containers",
     "logs": "pm2 logs"
