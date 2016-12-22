@@ -14,7 +14,7 @@
     "lint": "eslint src/server/server.jsx && eslint src/client/client.jsx"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL v3.0",
   "dependencies": {
     "express": "^4.14.0",
     "qs": "^6.3.0",
