@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:juz501/redux.git"
+    "url": "git@github.com:juz501/redux-pokemon.git"
   },
   "scripts": {
     "start": "pm2 start pm2.config.js",
