@@ -4,18 +4,37 @@
   "description": "Learn redux",
   "main": "index.js",
   "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.8.0"
+    "eslint-plugin-react": "^6.8.0",
+    "json-loader": "^0.5.4",
+    "style-loader": "^0.13.1",
+    "watch": "^1.0.1",
+    "webpack": "^1.14.0",
+    "webpack-node-externals": "^1.5.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:juz501/redux.git"
   },
   "scripts": {
-    "lint": "eslint src/server/server.jsx && eslint src/client/client.jsx"
+    "start": "pm2 start pm2.config.js",
+    "build": "npm run lint && npm run webpack",
+    "webpack": "webpack --progress --colors --display-error-details",
+    "webpack:watch": "webpack --progress --colors --display-error-edtails --watch",
+    "lint:watch": "watch \"npm run-script lint\" src",
+    "lint": "eslint src/server/server.js src/client/client.js src/containers src/reducers"
   },
-  "author": "",
-  "license": "GPL v3.0",
+  "author": "Julian Chan",
+  "license": "GPL-3.0",
   "dependencies": {
+    "classnames": "^2.2.5",
     "express": "^4.14.0",
     "qs": "^6.3.0",
     "react": "^15.4.1",

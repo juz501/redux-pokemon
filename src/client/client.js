@@ -11,6 +11,6 @@ const store = createStore(pokemonApp, preloadedState);
 
 render(
   <Provider store={store}>
-    <App />
+    <App pokemons={store.getState().pokemons} />
   </Provider>,
   document.getElementById('root'));
