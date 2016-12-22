@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from '../containers/App';
-import pokemonApp from '../reducers';
+import pokemonApp from '../reducers/index';
 
 const preloadedState = window.REDUX_PRELOADED_STATE;
 
@@ -11,6 +11,6 @@ const store = createStore(pokemonApp, preloadedState);
 
 render(
   <Provider store={store}>
-    <App pokemons={store.getState().pokemons} />
+    <App />
   </Provider>,
   document.getElementById('root'));

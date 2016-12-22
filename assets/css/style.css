@@ -1,0 +1,36 @@
+body {
+  font-family: Lato, sans-serif;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+div.selector {
+  text-align:center;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+div.selector input {
+  min-width: 100%;
+}
+
+li.pokemon {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  padding: 20px;
+}
+
+li.result {
+  list-style:none;
+  border: 2px solid transparent;
+  margin: 5px;
+}
+
+li.result:hover {  
+  cursor: pointer;
+  border: 2px solid lightgreen;
+}

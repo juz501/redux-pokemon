@@ -1,5 +1,5 @@
 {
-  "name": "redux",
+  "name": "redux-pokemon",
   "version": "1.0.0",
   "description": "Learn redux",
   "main": "index.js",
@@ -25,11 +25,17 @@
   },
   "scripts": {
     "start": "pm2 start pm2.config.js",
+    "stop": "pm2 delete all",
+    "restart": "(npm run stop || true )&& npm run start",
     "build": "npm run lint && npm run webpack",
     "webpack": "webpack --progress --colors --display-error-details",
-    "webpack:watch": "webpack --progress --colors --display-error-edtails --watch",
+    "webpack:watch": "webpack --progress --colors --display-error-details --watch",
+    "assets": "npm run json && npm run styles",
+    "json": "cp -p assets/json/*.json build/json",
+    "styles": "cp -p assets/css/*.css build/css",    
     "lint:watch": "watch \"npm run-script lint\" src",
-    "lint": "eslint src/server/server.js src/client/client.js src/containers src/reducers"
+    "lint": "eslint src/server/server.js src/client/client.js src/actions src/reducers src/containers",
+    "logs": "pm2 logs"
   },
   "author": "Julian Chan",
   "license": "GPL-3.0",

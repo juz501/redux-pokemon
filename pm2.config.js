@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
-    name : "redux",
+    name : "redux-pokemon",
     script: "index.js",
-    watch: true
+    watch: ['src']
   }]
 }

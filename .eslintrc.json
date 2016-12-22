@@ -9,8 +9,10 @@
     "comma-dangle": "off",
 		"eol-last": "warn",
 	  "linebreak-style": "off",
+    "no-trailing-spaces": "warn",
 		"no-unused-vars": "warn",
 		"import/extensions": "warn",
+    "import/no-mutable-exports": "off",
 		"import/no-unresolved": "warn",
     "jsx-a11y/no-static-element-interactions": "off",
     "react/jsx-filename-extension": "off"
