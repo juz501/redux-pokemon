@@ -3,6 +3,13 @@ function mapPokemons(k) {
 }
 
 function mapPokemonSlugs(k) {
+  if (k.Name === 'Nidoran \u2642') {
+    return 'nidoran-m';
+  } else if (k.Name === 'Nidoran \u2640') {
+    return 'nidoran-f';
+  } else if (k.Name === 'Mr. Mime') {
+    return 'mr-mime';
+  }
   return k.Name.toLowerCase();
 }
 
