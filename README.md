@@ -1,7 +1,7 @@
 # redux-pokemon
 Learning how to use redux by selecting pokemon by name
 
-![Pokemon Selector](/screenshot.png?v=2&raw=true "Pokemon Selector")
+![Pokemon Selector](/screenshot1.png?raw=true "Pokemon Selector")
 
 ## Install
 * npm install
