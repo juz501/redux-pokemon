@@ -92,7 +92,7 @@ function handleRender(req, res) {
       pokemons = [...pokemons, {
         name: pokemonNames[key],
         slug: pokemonSlugs[key],
-        image: pokemonImages[key]
+        image: pokemonImages[key],
       }];
     }
   });
@@ -106,7 +106,7 @@ function handleRender(req, res) {
   const preloadedState = {
     pokemons: { matches: pokemons, link: makeLink(req.origin, pokemons) },
     search: { searchMatches: [], searchInput: '' },
-    pokemonData: pokemonListJSON
+    pokemonData: pokemonListJSON,
   };
 
   const store = createStore(pokemonApp, preloadedState);

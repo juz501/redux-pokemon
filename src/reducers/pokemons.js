@@ -41,7 +41,7 @@ const initialMatches = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/image
 
 const pokemons = (state = {
   matches: initialMatches,
-  link: makeLink('', initialMatches)
+  link: makeLink('', initialMatches),
 }, action) => {
   switch (action.type) {
     case 'ADD_POKEMON': {
@@ -55,7 +55,7 @@ const pokemons = (state = {
         const newObj = {
           name: pokemonNames[key],
           slug: pokemonSlugs[key],
-          image: pokemonImages[key]
+          image: pokemonImages[key],
         };
         if (pokemonSlugs[key].indexOf(slug) !== -1 && !findPokemon(state.matches, newObj.slug)) {
           matches = [...state.matches, newObj];

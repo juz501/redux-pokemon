@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { findPokemon, changeInput, addPokemon } from '../actions/index';
 
-let App = ({
+const myApp = ({
   pokemons,
   searchInput,
   searchResults,
@@ -10,7 +10,7 @@ let App = ({
   link,
   onInputChange,
   onFindPokemon,
-  onSelectPokemon
+  onSelectPokemon,
   }) => (
     <div>
       <div className="selectWrapper">
@@ -46,22 +46,22 @@ let App = ({
     </div>
 );
 
-App.propTypes = {
+myApp.propTypes = {
   pokemons: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired
+    image: PropTypes.string.isRequired,
   })).isRequired,
   searchResults: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired
+    slug: PropTypes.string.isRequired,
   })).isRequired,
   searchInput: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   pokemonData: PropTypes.arrayOf(PropTypes.object).isRequired,
   onInputChange: PropTypes.func.isRequired,
   onFindPokemon: PropTypes.func.isRequired,
-  onSelectPokemon: PropTypes.func.isRequired
+  onSelectPokemon: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -69,7 +69,7 @@ const mapStateToProps = state => ({
   searchResults: state.search.searchMatches,
   searchInput: state.search.searchInput,
   pokemonData: state.pokemonData,
-  link: state.pokemons.link
+  link: state.pokemons.link,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -81,12 +81,12 @@ const mapDispatchToProps = dispatch => ({
   },
   onSelectPokemon: (slug, pokedata) => {
     dispatch(addPokemon(slug, pokedata));
-  }
+  },
 });
 
-App = connect(
+const App = connect(
   mapStateToProps,
-  mapDispatchToProps
-)(App);
+  mapDispatchToProps,
+)(myApp);
 
 export default App;
