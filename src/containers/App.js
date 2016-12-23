@@ -11,22 +11,24 @@ let App = ({
   onFindPokemon,
   onSelectPokemon }) => (
     <div>
-      <div className="selector">
-        <h1>Pokemon Selector</h1>
-        <input
-          type="text"
-          onChange={
-            (e) => {
-              if (e.target && e.target.value && e.target.value.length >= 3) {
-                onFindPokemon(e.target.value, pokemonData);
+      <div className="selectWrapper">
+        <div className="selector">
+          <h1>Pokemon Selector</h1>
+          <input
+            type="text"
+            onChange={
+              (e) => {
+                if (e.target && e.target.value && e.target.value.length >= 3) {
+                  onFindPokemon(e.target.value, pokemonData);
+                }
+                onInputChange(e.target.value);
               }
-              onInputChange(e.target.value);
             }
-          }
-          value={searchInput}
-          placeholder="Type and select to add more pokemon"
-        />
-        { searchResults.length > 0 ? <ul className="resultList">{searchResults.map((res, i) => <li key={i} className="result" onClick={() => { onSelectPokemon(res.slug, pokemonData); }}>{res.name}</li>)}</ul> : '' }
+            value={searchInput}
+            placeholder="Type and select to add more pokemon"
+          />
+          { searchResults.length > 0 ? <ul className="resultList">{searchResults.map((res, i) => <li key={i} className="result" onClick={() => { onSelectPokemon(res.slug, pokemonData); }}>{res.name}</li>)}</ul> : '' }
+        </div>
       </div>
       <ul className="pokemonList">{pokemons.map((pokemon, i) =>
         <li key={i} className="pokemonItem">

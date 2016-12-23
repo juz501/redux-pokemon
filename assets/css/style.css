@@ -2,13 +2,34 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Lato, sans-serif;
-}
-
-ul, li {
+body, ul, li , h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0;
+}
+
+@font-face {
+    font-family: 'pokemon_gbregular';
+    src: url('/build/fonts/pokemon_gb-webfont.woff2') format('woff2'),
+         url('/build/fonts/pokemon_gb-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: 'pokemon_gbregular', sans-serif;
+  font-size: 12px;
+  background: rgb(127,173,113) url('/build/images/background.png') top center no-repeat;  
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 2;
+}
+
+div.selectWrapper {
+  position: fixed;
+  width: 100%;
+  background-color: rgb(121,201,249);
+  padding: 10px;
 }
 
 div.selector {
@@ -16,9 +37,29 @@ div.selector {
   width: 50%;
   min-width: 230px;
   margin: 0 0 0 -25%;
-  position: fixed;
+  position: relative;
   left: 50%;
-  top: 0;
+  top: 0;  
+}
+
+@media screen and (max-width: 700px) {
+  div.selector {
+    width: 350px;      
+    margin: 0 0 0 -175px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  div.selectWrapper {
+    position: relative;
+  }
+
+  div.selector {
+    width: 100%;     
+    margin: 0;    
+    padding: 0 5px;
+    left: 0;
+  }
 }
 
 div.selector input {
@@ -27,7 +68,46 @@ div.selector input {
 }
 
 ul.pokemonList {
-  padding-top: 108px;
+  padding-top: 90px;  
+}
+
+@media screen and (max-width: 1200px) {
+  ul.pokemonList {
+    margin: 0 auto;
+    width: 1000px;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  ul.pokemonList {
+    margin: 0 auto;
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  ul.pokemonList {    
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  ul.pokemonList {    
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  ul.pokemonList {    
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  ul.pokemonList {
+    padding: 0;
+  }
 }
 
 li.pokemonItem {
@@ -42,17 +122,22 @@ div.pokemon {
   display:table-cell;
   vertical-align:middle;
   width: 200px;
-  height: 180px;
+  height: 160px;  
+  padding: 20px 30px;
+  border-radius: 200px;
+  background-color: white;
+  border: black solid 2px;
 }
 
 div.pokemon img {
   max-width: 100%;
+  max-height: 100%;
 }
 
 ul.resultList {
-  position: absolute;
+  position: relative;
   left: 0;
-  top: 108px;
+  top: 0;
   background-color: white;
   width: 100%;
   z-index: 1;

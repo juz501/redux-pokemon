@@ -11,6 +11,8 @@ function nameToSlug(name) {
     return 'nidoran-f';
   } else if (name === 'Mr. Mime') {
     return 'mr-mime';
+  } else if (name === 'Farfetch\'d') {
+    return 'farfetchd';
   }
   return name.toLowerCase();  
 }
