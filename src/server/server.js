@@ -72,6 +72,13 @@ function download(url, dest, cb) {
   });
 }
 
+function makeLink(origin = '', pokemons) {
+  let link = `${origin}/`;
+  let next = '?';
+  pokemons.forEach((p) => { link = `${link}${next}pokemon[]=${p.slug}`; next = '&'; });
+  return link;
+}
+
 function handleRender(req, res) {
   const params = qs.parse(req.query);
   const pokemon = params.pokemon || ['pikachu'];
@@ -97,7 +104,7 @@ function handleRender(req, res) {
   });
 
   const preloadedState = {
-    pokemons,
+    pokemons: { matches: pokemons, link: makeLink(req.origin, pokemons) },
     search: { searchMatches: [], searchInput: '' },
     pokemonData: pokemonListJSON
   };

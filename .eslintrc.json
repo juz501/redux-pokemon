@@ -16,5 +16,8 @@
 		"import/no-unresolved": "warn",
     "jsx-a11y/no-static-element-interactions": "off",
     "react/jsx-filename-extension": "off"
-	}
+	},
+  "globals": {
+    "window": true
+  }
 }

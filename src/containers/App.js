@@ -7,9 +7,11 @@ let App = ({
   searchInput,
   searchResults,
   pokemonData,
+  link,
   onInputChange,
   onFindPokemon,
-  onSelectPokemon }) => (
+  onSelectPokemon
+  }) => (
     <div>
       <div className="selectWrapper">
         <div className="selector">
@@ -30,14 +32,17 @@ let App = ({
           { searchResults.length > 0 ? <ul className="resultList">{searchResults.map((res, i) => <li key={i} className="result" onClick={() => { onSelectPokemon(res.slug, pokemonData); }}>{res.name}</li>)}</ul> : '' }
         </div>
       </div>
-      <ul className="pokemonList">{pokemons.map((pokemon, i) =>
-        <li key={i} className="pokemonItem">
-          <h2>{pokemon.name}</h2>
-          <div className="pokemon">
-            <img src={`/build/images/${pokemon.image}`} alt={pokemon.name} width="auto" height="auto" />
-          </div>
-        </li>)}
-      </ul>
+      <div className="pokemonListWrapper">
+        <a href={link} className="permalink">Permalink</a>
+        <ul className="pokemonList">{pokemons.map((pokemon, i) =>
+          <li key={i} className="pokemonItem">
+            <h2>{pokemon.name}</h2>
+            <div className="pokemon">
+              <img src={`/build/images/${pokemon.image}`} alt={pokemon.name} width="auto" height="auto" />
+            </div>
+          </li>)}
+        </ul>
+      </div>
     </div>
 );
 
@@ -52,6 +57,7 @@ App.propTypes = {
     slug: PropTypes.string.isRequired
   })).isRequired,
   searchInput: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
   pokemonData: PropTypes.arrayOf(PropTypes.object).isRequired,
   onInputChange: PropTypes.func.isRequired,
   onFindPokemon: PropTypes.func.isRequired,
@@ -59,10 +65,11 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  pokemons: state.pokemons,
+  pokemons: state.pokemons.matches,
   searchResults: state.search.searchMatches,
   searchInput: state.search.searchInput,
-  pokemonData: state.pokemonData
+  pokemonData: state.pokemonData,
+  link: state.pokemons.link
 });
 
 const mapDispatchToProps = dispatch => ({

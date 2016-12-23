@@ -42,14 +42,14 @@ div.selector {
   top: 0;  
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 805px) {
   div.selector {
-    width: 350px;      
-    margin: 0 0 0 -175px;
+    width: 386px;      
+    margin: 0 0 0 -193px;
   }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 422px) {
   div.selectWrapper {
     position: relative;
   }
@@ -67,17 +67,49 @@ div.selector input {
   padding: 5px 1px;
 }
 
+div.pokemonListWrapper {
+  padding-top: 97px;
+}
+
+a.permalink {
+  margin: 0 auto;  
+  width: 108px;
+  display:block;  
+}
+
 ul.pokemonList {
-  padding-top: 90px;  
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 2000px) {
+  ul.pokemonList {
+    width: 1800px;
+  }
+}
+
+@media screen and (max-width: 1800px) {
+  ul.pokemonList {
+    width: 1600px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  ul.pokemonList {
+    width: 1400px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  ul.pokemonList {
+    width: 1200px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
   ul.pokemonList {
-    margin: 0 auto;
     width: 1000px;
   }
 }
-
 
 @media screen and (max-width: 1000px) {
   ul.pokemonList {
@@ -104,8 +136,8 @@ ul.pokemonList {
   }
 }
 
-@media screen and (max-width: 350px) {
-  ul.pokemonList {
+@media screen and (max-width: 422px) {
+  div.pokemonListWrapper {
     padding: 0;
   }
 }

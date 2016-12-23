@@ -30,7 +30,19 @@ function findPokemon(pokemons, slug) {
   return pokemons.some(arrVal => slug === arrVal.slug);
 }
 
-const pokemons = (state = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/images/pikachu.jpg' }], action) => {
+function makeLink(origin = '', pokemons) {
+  let link = `${origin}/`;
+  let next = '?';
+  pokemons.forEach((p) => { link = `${link}${next}pokemon[]=${p.slug}`; next = '&'; });
+  return link;
+}
+
+const initialMatches = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/images/pikachu.jpg' }];
+
+const pokemons = (state = {
+  matches: initialMatches,
+  link: makeLink('', initialMatches)
+}, action) => {
   switch (action.type) {
     case 'ADD_POKEMON': {
       const slug = (action.slug ? nameToSlug(action.slug) : '');
@@ -38,18 +50,19 @@ const pokemons = (state = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/im
       const pokemonNames = pokemonListJSON.map(mapPokemons) || [];
       const pokemonSlugs = pokemonListJSON.map(mapPokemonSlugs) || [];
       const pokemonImages = pokemonListJSON.map(mapPokemonImages) || [];
-      let matches = [...state];
+      let matches = [...state.matches];
       Object.keys(pokemonSlugs).forEach((key) => {
         const newObj = {
           name: pokemonNames[key],
           slug: pokemonSlugs[key],
           image: pokemonImages[key]
         };
-        if (pokemonSlugs[key].indexOf(slug) !== -1 && !findPokemon(state, newObj.slug)) {
-          matches = [...state, newObj];
+        if (pokemonSlugs[key].indexOf(slug) !== -1 && !findPokemon(state.matches, newObj.slug)) {
+          matches = [...state.matches, newObj];
         }
       });
-      return matches;
+      const link = makeLink(window.location.origin, matches);
+      return Object.assign({}, state, { matches, link });
     }
     default: {
       return state;
