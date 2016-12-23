@@ -1,25 +1,4 @@
-function mapPokemons(k) {
-  return k.Name;
-}
-
-function nameToSlug(name) {
-  if (typeof name === 'undefined') {
-    return '';
-  } else if (name === 'Nidoran \u2642') {
-    return 'nidoran-m';
-  } else if (name === 'Nidoran \u2640') {
-    return 'nidoran-f';
-  } else if (name === 'Mr. Mime') {
-    return 'mr-mime';
-  } else if (name === 'Farfetch\'d') {
-    return 'farfetchd';
-  }
-  return name.toLowerCase();
-}
-
-function mapPokemonSlugs(k) {
-  return nameToSlug(k.Name);
-}
+import helpers from '../helpers/helpers';
 
 const search = (state = { searchMatches: [], searchInput: '' }, action) => {
   switch (action.type) {
@@ -27,8 +6,8 @@ const search = (state = { searchMatches: [], searchInput: '' }, action) => {
       const text = action.text;
       let matches = [];
       const pokemonData = action.data;
-      const pokemonNames = pokemonData.map(mapPokemons);
-      const pokemonSlugs = pokemonData.map(mapPokemonSlugs);
+      const pokemonNames = pokemonData.map(helpers.getPokemonName);
+      const pokemonSlugs = pokemonData.map(helpers.getPokemonSlug);
       Object.keys(pokemonSlugs).forEach((key) => {
         if (pokemonSlugs[key].indexOf(text) !== -1) {
           matches = [...matches, { name: pokemonNames[key], slug: pokemonSlugs[key] }];

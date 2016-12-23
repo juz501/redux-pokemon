@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import https from 'https';
 import fs from 'fs';
+import helpers from '../helpers/helpers';
 import pokemonApp from '../reducers/index';
 import App from '../containers/App';
 import pokemonListJSON from '../../assets/json/pokemon.json';
@@ -31,34 +32,6 @@ function renderFullPage(html, preloadedState) {
   </html>`;
 }
 
-function mapPokemons(k) {
-  return k.Name;
-}
-
-function nameToSlug(name) {
-  if (typeof name === 'undefined') {
-    return '';
-  } else if (name === 'Nidoran \u2642') {
-    return 'nidoran-m';
-  } else if (name === 'Nidoran \u2640') {
-    return 'nidoran-f';
-  } else if (name === 'Mr. Mime') {
-    return 'mr-mime';
-  } else if (name === 'Farfetch\'d') {
-    return 'farfetchd';
-  }
-  return name.toLowerCase();
-}
-
-function mapPokemonSlugs(k) {
-  return nameToSlug(k.Name);
-}
-
-function mapPokemonImages(k) {
-  const slug = nameToSlug(k.Name);
-  return `${slug}.jpg`;
-}
-
 function download(url, dest, cb) {
   const file = fs.createWriteStream(dest);
   https.get(url, (response) => {
@@ -72,20 +45,13 @@ function download(url, dest, cb) {
   });
 }
 
-function makeLink(origin = '', pokemons) {
-  let link = `${origin}/`;
-  let next = '?';
-  pokemons.forEach((p) => { link = `${link}${next}pokemon[]=${p.slug}`; next = '&'; });
-  return link;
-}
-
 function handleRender(req, res) {
   const params = qs.parse(req.query);
   const pokemon = params.pokemon || ['pikachu'];
   let pokemons = [];
-  const pokemonNames = pokemonListJSON.map(mapPokemons) || [];
-  const pokemonSlugs = pokemonListJSON.map(mapPokemonSlugs) || [];
-  const pokemonImages = pokemonListJSON.map(mapPokemonImages) || [];
+  const pokemonNames = pokemonListJSON.map(helpers.getPokemonName) || [];
+  const pokemonSlugs = pokemonListJSON.map(helpers.getPokemonSlug) || [];
+  const pokemonImages = pokemonListJSON.map(helpers.getPokemonImage) || [];
 
   Object.keys(pokemonSlugs).forEach((key) => {
     if (pokemon.indexOf(pokemonSlugs[key]) !== -1 || pokemon === 'all') {
@@ -104,7 +70,7 @@ function handleRender(req, res) {
   });
 
   const preloadedState = {
-    pokemons: { matches: pokemons, link: makeLink(req.origin, pokemons) },
+    pokemons: { matches: pokemons, link: helpers.makeLink(req.origin, pokemons) },
     search: { searchMatches: [], searchInput: '' },
     pokemonData: pokemonListJSON,
   };
