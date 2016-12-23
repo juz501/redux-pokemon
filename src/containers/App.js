@@ -34,7 +34,7 @@ let App = ({
         <li key={i} className="pokemonItem">
           <h2>{pokemon.name}</h2>
           <div className="pokemon">
-              <img src={`/build/images/${pokemon.image}`} alt={pokemon.name} width="auto" height="auto" />
+            <img src={`/build/images/${pokemon.image}`} alt={pokemon.name} width="auto" height="auto" />
           </div>
         </li>)}
       </ul>

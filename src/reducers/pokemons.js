@@ -3,7 +3,7 @@ function mapPokemons(k) {
 }
 
 function nameToSlug(name) {
-  if (typeof name == 'undefined') {
+  if (typeof name === 'undefined') {
     return '';
   } else if (name === 'Nidoran \u2642') {
     return 'nidoran-m';
@@ -14,11 +14,11 @@ function nameToSlug(name) {
   } else if (name === 'Farfetch\'d') {
     return 'farfetchd';
   }
-  return name.toLowerCase();  
+  return name.toLowerCase();
 }
 
 function mapPokemonSlugs(k) {
-  return nameToSlug(k.Name);  
+  return nameToSlug(k.Name);
 }
 
 function mapPokemonImages(k) {
@@ -33,7 +33,7 @@ function findPokemon(pokemons, slug) {
 const pokemons = (state = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/images/pikachu.jpg' }], action) => {
   switch (action.type) {
     case 'ADD_POKEMON': {
-    const slug = (action.slug ? nameToSlug(action.slug) : '');
+      const slug = (action.slug ? nameToSlug(action.slug) : '');
       const pokemonListJSON = action.data;
       const pokemonNames = pokemonListJSON.map(mapPokemons) || [];
       const pokemonSlugs = pokemonListJSON.map(mapPokemonSlugs) || [];
@@ -44,7 +44,7 @@ const pokemons = (state = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/im
           name: pokemonNames[key],
           slug: pokemonSlugs[key],
           image: pokemonImages[key]
-        };        
+        };
         if (pokemonSlugs[key].indexOf(slug) !== -1 && !findPokemon(state, newObj.slug)) {
           matches = [...state, newObj];
         }

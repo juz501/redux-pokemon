@@ -36,7 +36,7 @@ function mapPokemons(k) {
 }
 
 function nameToSlug(name) {
-  if (typeof name == 'undefined') {
+  if (typeof name === 'undefined') {
     return '';
   } else if (name === 'Nidoran \u2642') {
     return 'nidoran-m';
@@ -47,15 +47,15 @@ function nameToSlug(name) {
   } else if (name === 'Farfetch\'d') {
     return 'farfetchd';
   }
-  return name.toLowerCase();  
+  return name.toLowerCase();
 }
 
 function mapPokemonSlugs(k) {
-  return nameToSlug(k.Name);  
+  return nameToSlug(k.Name);
 }
 
 function mapPokemonImages(k) {
-  const slug = nameToSlug(k.Name);  
+  const slug = nameToSlug(k.Name);
   return `${slug}.jpg`;
 }
 
@@ -81,7 +81,7 @@ function handleRender(req, res) {
   const pokemonImages = pokemonListJSON.map(mapPokemonImages) || [];
 
   Object.keys(pokemonSlugs).forEach((key) => {
-    if (pokemon.indexOf(pokemonSlugs[key]) !== -1 || pokemon == 'all') {
+    if (pokemon.indexOf(pokemonSlugs[key]) !== -1 || pokemon === 'all') {
       pokemons = [...pokemons, {
         name: pokemonNames[key],
         slug: pokemonSlugs[key],
