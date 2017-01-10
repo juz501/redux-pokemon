@@ -2,9 +2,9 @@ const helpers = {
   nameToSlug(name) {
     if (typeof name === 'undefined') {
       return '';
-    } else if (name === 'Nidoran \u2642') {
+    } else if (name === 'Nidoran\u2642') {
       return 'nidoran-m';
-    } else if (name === 'Nidoran \u2640') {
+    } else if (name === 'Nidoran\u2640') {
       return 'nidoran-f';
     } else if (name === 'Mr. Mime') {
       return 'mr-mime';

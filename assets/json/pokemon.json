@@ -1953,7 +1953,7 @@
   },
   {
     "Number": "029",
-    "Name": "Nidoran \u2640",
+    "Name": "Nidoran\u2640",
     "Classification": "Poison Pin Pok\u00e8mon",
     "Types": [
       "Poison"
@@ -2083,7 +2083,7 @@
     "Previous evolution(s)": [
       {
         "Number": 29,
-        "Name": "Nidoran \u2640"
+        "Name": "Nidoran\u2640"
       }
     ],
     "Next Evolution Requirements": {
@@ -2162,7 +2162,7 @@
     "Previous evolution(s)": [
       {
         "Number": 29,
-        "Name": "Nidoran \u2640"
+        "Name": "Nidoran\u2640"
       },
       {
         "Number": 30,
@@ -2174,7 +2174,7 @@
   },
   {
     "Number": "032",
-    "Name": "Nidoran \u2642",
+    "Name": "Nidoran\u2642",
     "Classification": "Poison Pin Pok\u00e8mon",
     "Types": [
       "Poison"
@@ -2304,7 +2304,7 @@
     "Previous evolution(s)": [
       {
         "Number": 32,
-        "Name": "Nidoran \u2642"
+        "Name": "Nidoran\u2642"
       }
     ],
     "Next Evolution Requirements": {
@@ -2383,7 +2383,7 @@
     "Previous evolution(s)": [
       {
         "Number": 32,
-        "Name": "Nidoran \u2642"
+        "Name": "Nidoran\u2642"
       },
       {
         "Number": 33,
