@@ -47,7 +47,7 @@ function download(url, dest, cb) {
 
 function handleRender(req, res) {
   const params = qs.parse(req.query);
-  const pokemon = params.pokemon || ['pikachu'];
+  const pokemon = params.pokemon || [];
   let pokemons = [];
   const pokemonNames = pokemonListJSON.map(helpers.getPokemonName) || [];
   const pokemonSlugs = pokemonListJSON.map(helpers.getPokemonSlug) || [];

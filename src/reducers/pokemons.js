@@ -4,7 +4,7 @@ function findPokemon(pokemons, slug) {
   return pokemons.some(arrVal => slug === arrVal.slug);
 }
 
-const initialMatches = [{ name: 'Pikachu', slug: 'pikachu', image: '/build/images/pikachu.jpg' }];
+const initialMatches = [];
 
 const pokemons = (state = {
   matches: initialMatches,
