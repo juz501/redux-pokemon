@@ -8,6 +8,6 @@ Learning how to use redux by selecting pokemon by name
 * npm start
 
 ## Usage
-* via url http://localhost:3000/?pokemon[]=pikachu&pokemon[]=charmander
-* via url http://localhost:3000/?pokemon=all
+* via url http://localhost:20001/?pokemon[]=pikachu&pokemon[]=charmander
+* via url http://localhost:20001/?pokemon=all
 * via input field - type and select from dropdown

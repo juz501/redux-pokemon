@@ -12,7 +12,7 @@ import App from '../containers/App';
 import pokemonListJSON from '../../assets/json/pokemon.json';
 
 const app = Express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 20001);
 app.use('/build', Express.static('build'));
 
 function renderFullPage(html, preloadedState) {

@@ -32,12 +32,12 @@
     "webpack": "webpack --progress --colors --display-error-details",
     "webpack:watch": "webpack --progress --colors --display-error-details --watch",
     "assets": "npm run json && npm run styles && npm run images && npm run fonts",
-    "json": "cp -p assets/json/*.json build/json",
-    "styles": "cp -p assets/css/*.css build/css",
+    "json": "mkdir -p build/json && cp assets/json/*.json build/json",
+    "styles": "mkdir -p build/css && cp assets/css/*.css build/css",
     "styles:watch": "watch \"npm run-script styles\" assets/css",
-    "fonts": "cp -p assets/fonts/* build/fonts",
+    "fonts": "mkdir -p build/fonts && cp assets/fonts/* build/fonts",
     "fonts:watch": "watch \"npm run-script fonts\" assets/fonts",
-    "images": "cp -p assets/images/* build/images",
+    "images": "mkdir -p build/images && cp assets/images/* build/images",
     "images:watch": "watch \"npm run-script images\" assets/images",
     "lint:watch": "watch \"npm run-script lint\" src",
     "lint": "eslint src/server/server.js src/client/client.js src/actions src/reducers src/containers",
@@ -52,6 +52,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "pm2": "^2.2.3"
   }
 }
