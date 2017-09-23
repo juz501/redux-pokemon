@@ -90,7 +90,7 @@ app.use(handleRender);
 
 function notifyStart() {
   const port = app.get('port');
-  console.log(`Web server listening on port ${port}`); // eslint-disable-line no-console
+  // console.log(`Web server listening on port ${port}`); // eslint-disable-line no-console
 }
 
 app.listen(app.get('port'), notifyStart);
