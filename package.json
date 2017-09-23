@@ -17,6 +17,7 @@
   },
   "scripts": {
     "prestart": "npm run build && npm run assets",
+    "postinstall": "npm run prestart",
     "start": "pm2 start pm2.config.js",
     "stop": "pm2 delete all",
     "restart": "(npm run stop || true )&& npm run start",
