@@ -1,0 +1,6 @@
+{
+  "name": "Redux Pokemon App",
+  "description": "A Pokemon selector app built in React with Redux",
+  "repository": "https://github.com/juz501/redux-pokemon",
+  "keywords": ["node", "express", "static", "react", "redux", "pokeapi", "pokemon"]
+}
