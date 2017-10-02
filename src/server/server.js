@@ -14,7 +14,7 @@ import App from '../containers/App';
 import pokemonListJSON from '../../assets/json/pokemon.json';
 
 const app = Express();
-app.use(compression({filter: shouldCompress}));
+
 app.use(sslRedirect());
 
 app.set('port', process.env.PORT || 20001);
@@ -27,9 +27,11 @@ function shouldCompress(req, res) {
   return compression.filter(req, res);
 }
 
+app.use(compression({ filter: shouldCompress }));
+
 function renderFullPage(html, preloadedState) {
   return `<!doctype html>
-  <html>
+  <html lang="en">
     <head>
       <title>Redux Pokemon</title>
       <link rel="stylesheet" href="/build/css/style.css">
@@ -101,7 +103,7 @@ function handleRender(req, res) {
 app.use(handleRender);
 
 function notifyStart() {
-  const port = app.get('port');
+  // const port = app.get('port');
   // console.log(`Web server listening on port ${port}`); // eslint-disable-line no-console
 }
 

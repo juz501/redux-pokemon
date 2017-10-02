@@ -18,6 +18,7 @@ const myApp = ({
           <h1>Pokemon Selector</h1>
           <input
             type="text"
+            aria-label="add pokemon"
             onChange={
               (e) => {
                 if (e.target && e.target.value && e.target.value.length >= 3) {
