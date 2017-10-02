@@ -1,4 +1,5 @@
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = [{
@@ -32,7 +33,10 @@ module.exports = [{
         }
       },
     ]
-  }
+  },
+  "plugins": [
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 },
 {
   "entry": path.join(__dirname, 'src', 'server', 'server.js'),
