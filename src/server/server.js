@@ -1,5 +1,6 @@
 import Express from 'express';
 import React from 'react';
+import compression from 'compression';
 import qs from 'qs';
 import sslRedirect from 'heroku-ssl-redirect';
 import { createStore } from 'redux';
@@ -13,10 +14,18 @@ import App from '../containers/App';
 import pokemonListJSON from '../../assets/json/pokemon.json';
 
 const app = Express();
+app.use(compression({filter: shouldCompress}));
 app.use(sslRedirect());
 
 app.set('port', process.env.PORT || 20001);
 app.use('/build', Express.static('build'));
+
+function shouldCompress(req, res) {
+  if (req.headers['x-no-compression']) {
+    return false;
+  }
+  return compression.filter(req, res);
+}
 
 function renderFullPage(html, preloadedState) {
   return `<!doctype html>
