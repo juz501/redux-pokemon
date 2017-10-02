@@ -40,7 +40,12 @@ module.exports = [{
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.DedupePlugin(), // dedupe similar code
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+      output: { comments: false },
+    }), // minify everything
+    new webpack.optimize.AggressiveMergingPlugin(), // Merge chunks
   ],
 },
 {

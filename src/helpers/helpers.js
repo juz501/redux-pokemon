@@ -15,7 +15,7 @@ const helpers = {
   },
   getPokemonName(pokemon) {
     return pokemon.Name;
-  },  
+  },
   getPokemonSlug(pokemon) {
     return helpers.nameToSlug(pokemon.Name);
   },
@@ -28,7 +28,7 @@ const helpers = {
     let next = '?';
     pokemons.forEach((p) => { link = `${link}${next}pokemon[]=${p.slug}`; next = '&'; });
     return link;
-  }
+  },
 };
 
 export default helpers;
