@@ -2,7 +2,7 @@ import Express from 'express';
 import React from 'react';
 import compression from 'compression';
 import qs from 'qs';
-import spdy from 'spdy';
+import http2 from 'http2';
 import sslRedirect from 'heroku-ssl-redirect';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -113,17 +113,11 @@ function notifyStart() {
   // console.log(`Web server listening on port ${port}`); // eslint-disable-line no-console
 }
 
-//app.listen(app.get('port'), notifyStart);
+// app.listen(app.get('port'), notifyStart);
 
-const options = {};
-
-spdy
-  .createServer(options, app)
-  .listen(app.get('port'), (error) => {
-    if (error) {
-      return process.exit(1);
-    }
-  });
+http2
+  .createServer({}, app)
+  .listen(app.get('port'), notifyStart);
 
 process.on('SIGTERM', () => {
   app.close(() => {
