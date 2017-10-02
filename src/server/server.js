@@ -59,6 +59,11 @@ function download(url, dest, cb) {
   });
 }
 
+app.get('/sw.js', (req, res) => {
+  res.set('Content-Type', 'text/javascript');
+  res.send('console.log("hello world");');
+});
+
 function handleRender(req, res) {
   const params = qs.parse(req.query);
   const pokemon = params.pokemon || [];
