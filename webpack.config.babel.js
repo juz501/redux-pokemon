@@ -3,62 +3,67 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = [{
-  "entry": path.join(__dirname, 'src', 'client', 'client.js'),
-  "output": {
+  entry: path.join(__dirname, 'src', 'client', 'client.js'),
+  output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js'
   },
-  "target": "web",  
-  "module": {
-    "loaders": [
+  target: "web",  
+  module: {
+    loaders: [
       { 
-        "test": /\.css$/,
-        "exclude": /(node_modules|bower_components)/,
-        "loader": 'style!css' 
+        test: /\.css$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'style!css' 
       },
       { 
-        "test": /\.json$/,
-        "exclude": /(node_modules|bower_components)/,
-        "loader": 'json-loader'
+        test: /\.json$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'json-loader'
       },
       { 
-        "test": /\.jsx?$/,
-        "resolve": {
+        test: /\.jsx?$/,
+        resolve: {
           extensions: ['', '.js', '.jsx']
         },
-        "exclude": /(node_modules|bower_components)/,
-        "loader": 'babel',
-        "query": {
-          "presets": ['es2015', 'react']
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015', 'react']
         }
       },
     ]
   },
-  "plugins": [
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin()
   ]
 },
 {
-  "entry": path.join(__dirname, 'src', 'server', 'server.js'),
-  "output": {
+  entry: path.join(__dirname, 'src', 'server', 'server.js'),
+  output: {
     path: __dirname,
     filename: 'index.js'
   },
-  "target": 'node',
-  "externals": [nodeExternals()],
-  "module": {
-    "loaders": [
+  target: 'node',
+  externals: [nodeExternals()],
+  module: {
+    loaders: [
       { 
-        "test": /\.json$/,
-        "exclude": /(node_modules|bower_components)/,
-        "loader": 'json-loader'
+        test: /\.json$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'json-loader'
       },    
       { 
-        "test": /\.js$/,         
-        "exclude": /(node_modules|bower_components)/,
-        "loader": 'babel-loader',
-        "query": {
-          "presets": ['es2015', 'react']
+        test: /\.js$/,         
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
         }
       },
     ]
