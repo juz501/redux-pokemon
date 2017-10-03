@@ -1,5 +1,6 @@
 {
     "short_name": "PokeSelect",
     "name": "Redux Pokemon App",
-    "start_url": "/"
+    "start_url": "/",
+    "theme_color": "#7fad71"
 }
