@@ -18,7 +18,7 @@ body, ul, li , h1, h2, h3, h4, h5, h6 {
 body {
   font-family: 'pokemon_gbregular', sans-serif;
   font-size: 12px;
-  background: rgb(127,173,113) url('/build/images/background.png') top center no-repeat;  
+  background: rgb(127,173,113) url('/build/images/background-small.png') top center no-repeat;  
 }
 
 h1, h2, h3, h4, h5, h6 {

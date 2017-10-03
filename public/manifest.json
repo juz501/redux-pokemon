@@ -1,0 +1,30 @@
+{
+    "short_name": "PokeSelect",
+    "name": "Redux Pokemon App",
+    "start_url": "/",
+    "display": "fullscreen",
+    "theme_color": "#7FAD71",
+    "background_color": "#7FAD71",
+    "icons": [
+        {
+          "src": "pika96.jpg",
+          "sizes": "96x96",
+          "type": "image/jpg"
+        },
+        {
+          "src": "pika144.jpg",
+          "sizes": "144x144",
+          "type": "image/jpg"
+        },
+        {
+          "src": "pika192.jpg",
+          "sizes": "192x192",
+          "type": "image/jpg"
+        },
+        { 
+            "src": "pika512.jpg",
+            "sizes": "512x512",
+            "type": "image/jpg"
+        }
+    ]
+}

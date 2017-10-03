@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { findPokemon, changeInput, addPokemon } from '../actions/index';
 
@@ -18,6 +19,7 @@ const myApp = ({
           <h1>Pokemon Selector</h1>
           <input
             type="text"
+            aria-label="add pokemon"
             onChange={
               (e) => {
                 if (e.target && e.target.value && e.target.value.length >= 3) {
