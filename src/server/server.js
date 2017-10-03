@@ -2,7 +2,6 @@ import Express from 'express';
 import React from 'react';
 import compression from 'compression';
 import qs from 'qs';
-import path from 'path';
 import sslRedirect from 'heroku-ssl-redirect';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -15,7 +14,6 @@ import App from '../containers/App';
 import pokemonListJSON from '../../assets/json/pokemon.json';
 
 const app = Express();
-
 app.use(sslRedirect());
 
 app.set('port', process.env.PORT || 20001);
