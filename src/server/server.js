@@ -38,7 +38,7 @@ function renderFullPage(html, preloadedState) {
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="theme-color" content="#7FAD71" /> 
       <link rel="manifest" href="/manifest.json" />
-      <link rel="stylesheet" href="/build/css/style.css">
+      <link rel="stylesheet" href="/build/css/style.min.css">
     </head>
     <body>
       <div id="root">${html}</div>

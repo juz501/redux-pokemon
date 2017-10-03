@@ -27,7 +27,7 @@
     "webpack:watch": "webpack --progress --colors --display-error-details --watch",
     "assets": "npm run json && npm run styles && npm run images && npm run fonts",
     "json": "sh -c 'mkdir -p build/json && cp assets/json/*.json build/json'",
-    "styles": "sh -c 'mkdir -p build/css && cp assets/css/*.css build/css'",
+    "styles": "sh -c 'mkdir -p build/css && cp assets/css/*.css build/css && uglifycss build/css/style.css > build/css/style.min.css'",
     "styles:watch": "watch \"npm run-script styles\" assets/css",
     "fonts": "sh -c 'mkdir -p build/fonts && cp assets/fonts/* build/fonts'",
     "fonts:watch": "watch \"npm run-script fonts\" assets/fonts",
@@ -57,6 +57,7 @@
     "react-redux": "^5.0.1",
     "redux": "^3.6.0",
     "style-loader": "^0.13.1",
+    "uglifycss": "^0.0.27",
     "webpack": "^1.14.0",
     "webpack-node-externals": "^1.5.4"
   }

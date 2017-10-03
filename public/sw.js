@@ -1,10 +1,11 @@
 const CACHE_NAME = 'my-site-cache-v1';
 const urlsToCache = [
   '/',
-  '/build/css/style.css',
+  '/build/css/style.min.css',
   '/build/bundle.js',
   '/manifest.json',
   '/favicon.ico',
+  '/build/images/background-small.png',
   '/build/fonts/pokemon_gb-webfont.woff',
   '/build/fonts/pokemon_gb-webfont.woff2',
 ];
