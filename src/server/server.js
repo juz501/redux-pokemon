@@ -34,7 +34,8 @@ function renderFullPage(html, preloadedState) {
   <html lang="en">
     <head>
       <title>Redux Pokemon</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="theme-color" content="#7fad71"> 
       <link rel="stylesheet" href="/build/css/style.css">
     </head>
     <body>
