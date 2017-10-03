@@ -2,6 +2,7 @@
     "short_name": "PokeSelect",
     "name": "Redux Pokemon App",
     "start_url": "/",
+    "display": "fullscreen",
     "theme_color": "#7FAD71",
     "background_color": "#7FAD71",
     "icons": [
