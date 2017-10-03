@@ -2,7 +2,7 @@
     "short_name": "PokeSelect",
     "name": "Redux Pokemon App",
     "start_url": "/",
-    "theme_color": "#7fad71",
+    "theme_color": "#7FAD71",
     "icons": [
         {
           "src": "pika96.jpg",
@@ -19,5 +19,5 @@
           "sizes": "192x192",
           "type": "image/jpg"
         }
-      ],
+    ]
 }
