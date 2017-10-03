@@ -17,8 +17,6 @@ const app = Express();
 app.use(sslRedirect());
 
 app.set('port', process.env.PORT || 20001);
-app.use('/build', Express.static('build'));
-app.use('/', Express.static('public'));
 
 function shouldCompress(req, res) {
   if (req.headers['x-no-compression']) {
@@ -28,6 +26,9 @@ function shouldCompress(req, res) {
 }
 
 app.use(compression({ filter: shouldCompress }));
+
+app.use('/build', Express.static('build'));
+app.use('/', Express.static('public'));
 
 function renderFullPage(html, preloadedState) {
   return `<!doctype html>
