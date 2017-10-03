@@ -66,6 +66,10 @@ app.get('/sw.js', (req, res) => {
   res.send('console.log("hello world");');
 });
 
+app.get('/manifest.json', (req, res) => {
+  res.sendFile('/build/json/manifest.json');
+});
+
 function handleRender(req, res) {
   const params = qs.parse(req.query);
   const pokemon = params.pokemon || [];
