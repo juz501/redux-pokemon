@@ -2,6 +2,7 @@ import Express from 'express';
 import React from 'react';
 import compression from 'compression';
 import qs from 'qs';
+import path from 'path';
 import sslRedirect from 'heroku-ssl-redirect';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -19,6 +20,7 @@ app.use(sslRedirect());
 
 app.set('port', process.env.PORT || 20001);
 app.use('/build', Express.static('build'));
+app.use('/', Express.static('public'));
 
 function shouldCompress(req, res) {
   if (req.headers['x-no-compression']) {
@@ -64,10 +66,6 @@ function download(url, dest, cb) {
 app.get('/sw.js', (req, res) => {
   res.set('Content-Type', 'text/javascript');
   res.send('console.log("hello world");');
-});
-
-app.get('/manifest.json', (req, res) => {
-  res.sendFile('/build/json/manifest.json');
 });
 
 function handleRender(req, res) {
